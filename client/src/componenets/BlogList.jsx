@@ -53,18 +53,34 @@ const BlogList = () => {
     }
     
     // Apply search filter if there's input
-    if (input) {
+    if (input && input.trim() !== '') {
       const searchTerm = input.trim().toLowerCase();
+      console.log('Applying search filter with term:', searchTerm);
+      
       result = result.filter(blog => {
         // Handle both 'category' and 'catogry' typos in the data
         const category = blog.category || blog.catogry || '';
         const normalizedCategory = category.toString().toLowerCase();
-        return (
-          blog.title.toLowerCase().includes(searchTerm) ||
-          normalizedCategory.includes(searchTerm) ||
-          (blog.description && blog.description.toLowerCase().includes(searchTerm))
-        );
+        const titleMatch = blog.title && blog.title.toLowerCase().includes(searchTerm);
+        const categoryMatch = normalizedCategory.includes(searchTerm);
+        const descMatch = blog.description && blog.description.toLowerCase().includes(searchTerm);
+        
+        const matches = titleMatch || categoryMatch || descMatch;
+        
+        if (matches) {
+          console.log('Match found for blog:', {
+            title: blog.title,
+            category: normalizedCategory,
+            matches: { titleMatch, categoryMatch, descMatch }
+          });
+        }
+        
+        return matches;
       });
+      
+      console.log(`Found ${result.length} blogs matching search term: "${searchTerm}"`);
+    } else {
+      console.log('No search term provided, showing all filtered blogs');
     }
     
     return result;

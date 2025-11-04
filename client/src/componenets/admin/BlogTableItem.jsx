@@ -64,12 +64,12 @@ const BlogTableItem = ({ blog, fetchBlogs, updateBlogStatus, index, onTogglePubl
       if (data.success) {
         toast.success(data.message);
         
-        // Force a full page reload to ensure consistency
+        
         setTimeout(() => {
           window.location.reload();
         }, 500);
       } else {
-        // Revert the optimistic update if the API call fails
+         
         updateBlogStatus(blog._id, previousStatus);
         toast.error(data.message || 'Failed to update blog status');
       }
@@ -80,7 +80,7 @@ const BlogTableItem = ({ blog, fetchBlogs, updateBlogStatus, index, onTogglePubl
         status: error.response?.status
       });
       
-      // Revert the optimistic update on error
+       
       updateBlogStatus(blog._id, blog.isPublished);
       
       const errorMessage = error.response?.data?.message || error.message || 'Failed to update blog status';

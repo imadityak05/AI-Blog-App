@@ -118,7 +118,7 @@ const DashBoard = () => {
         <div className="flex items-center gap-6 bg-white p-4 rounded-lg shadow-md min-w-58 cursor-pointer hover:bg-primary/10 transition-all duration-300">
           <img src={assets.dashboard_icon_1} alt="dashboard icon" />
           <div>
-            <p className="text-xl font-semibold text-gray-600">{dashboardData.blogs}</p> {/* ✅ updated */}
+            <p className="text-xl font-semibold text-gray-600">{dashboardData.blogs}</p>  
             <p className="font-light text-gray-500">Overview of your blog</p>
           </div>
         </div>

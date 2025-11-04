@@ -64,14 +64,7 @@ const Sidebar = () => {
      <p className="hidden sm:inline-block">Comments</p>
    </NavLink>
     
-     {/* Bottom Section */}
-     <button
-        type="button"
-        onClick={logout}
-        className="flex mt-90 items-center justify-center text-red-500 rounded-full gap-3 py-3.5 px-3 md:px-9 md:min-w-64 cursor-pointer transition-all duration-300 hover:bg-primary/10"
-      >
-        Logout
-      </button>
+      
     </div>
   )
 }

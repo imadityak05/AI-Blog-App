@@ -8,6 +8,7 @@ const connectDB = async () => {
         await mongoose.connect(`${process.env.MONGODB_URI}/quickblog`);
         
     } catch (error) {
+        console.log("I am error: ", error)
         console.error(error.message);
     }
 };

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { assets, blogCategories } from '../../assets/assets'; // Make sure this path is correct
+import { assets, blogCategories } from '../../assets/assets'; 
 import Quill from 'quill';
-import 'quill/dist/quill.snow.css'; // Don't forget to import Quill's CSS
+import 'quill/dist/quill.snow.css';  
 import { useAppContext } from '../../context/AppContext';
 import {toast} from 'react-hot-toast'
 import {parse} from 'marked';
@@ -13,10 +13,10 @@ const AddBlog = () => {
   const quillRef = useRef(null);
 
   // State Management
-  const [image, setImage] = useState(null); // Use null for initial object state
+  const [image, setImage] = useState(null);  
   const [title, setTitle] = useState('');
   const [subtitle, setSubtitle] = useState('');
-  const [description, setDescription] = useState(''); // State to hold Quill's content
+  const [description, setDescription] = useState('');  
   const [category, setCategory] = useState('Startups');
   const [isPublished, setIsPublished] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -49,7 +49,7 @@ const AddBlog = () => {
       // Create blog object
       const blogData = {
         title,
-        subTitle: subtitle, // Note: server expects subTitle (camelCase)
+        subTitle: subtitle,  
         description: quillRef.current.root.innerHTML,
         category,
         isPublished
@@ -78,7 +78,7 @@ const AddBlog = () => {
         quillRef.current.root.innerHTML = '';
         setCategory('Startups');
         setImage(null);
-        document.getElementById('thumbnail').value = ''; // Reset file input
+        document.getElementById('thumbnail').value = '';  
       } else {
         toast.error(data.message || 'Failed to add blog');
       }
@@ -137,7 +137,7 @@ const AddBlog = () => {
         setDescription(quillRef.current.root.innerHTML);
       });
     }
-  }, []); // Empty dependency array ensures this runs only once on mount
+  }, []); 
 
   return (
     <form
@@ -157,7 +157,7 @@ const AddBlog = () => {
           <input
             onChange={handleImageUpload}
             type="file"
-            accept="image/*" // Good practice to specify accepted file types
+            accept="image/*"  
             hidden
             required
             id="thumbnail"
@@ -193,7 +193,7 @@ const AddBlog = () => {
         <div className='max-w-3xl relative pt-2 border border-gray-300 rounded-md'>
           <div
             ref={editorRef}
-            className='h-[300px] overflow-y-auto p-2' // Quill applies its own styling, so extra classes may not be needed
+            className='h-[300px] overflow-y-auto p-2' 
           ></div>
           {isGenerating && (
             <div className='absolute top-0 left-0 w-full h-full flex items-center justify-center z-20'>

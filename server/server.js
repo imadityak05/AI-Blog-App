@@ -1,13 +1,13 @@
 import express from "express";
-import 'dotenv/config';
 import cors from 'cors';
+import { configDotenv } from "dotenv";
 import connectDB from "./configs/db.js";
 import adminRouter from "./routes/adminRoutes.js";
 import blogRouter from "./routes/blogRoutes.js";
+import authRouter from "./routes/authRoutes.js";
 
 
-
-
+configDotenv();
 
 const app = express();
 
@@ -22,9 +22,9 @@ app.get('/', (req, res) => {
     res.send('Api is working');
 });
 
-app.use('/api/admin',adminRouter);
+app.use('/api/admin', adminRouter);
 app.use('/api/blog', blogRouter);
-
+app.use('/api/auth', authRouter);
 
 
 

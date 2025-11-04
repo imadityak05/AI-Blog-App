@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useAppContext } from '../../context/AppContext';
+import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 const Login = () => {
 
 
 
-    const {axios ,setToken}=useAppContext();
+    const { axios, setToken } = useAppContext();
+    const navigate = useNavigate();
 
     const [email , setEmail]=useState('');
     const [password , setPassword]=useState('');
@@ -48,6 +50,17 @@ const Login = () => {
               </div>
                
                 <button className='w-full py-2 mt-4 bg-primary text-white rounded-lg hover:bg-primary/80 transition-all duration-300 cursor-pointer' type='submit'>Login</button>
+                
+                <div className='mt-4 text-center text-sm text-gray-600'>
+                  Don't have an account?{' '}
+                  <button 
+                    type='button' 
+                    onClick={() => navigate('/admin/signup')}
+                    className='text-primary hover:underline font-medium'
+                  >
+                    Sign up
+                  </button>
+                </div>
               </div>
              </form>
         </div>
