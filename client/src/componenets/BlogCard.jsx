@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const BlogCard = ({ blog }) => {
-  // Note: Using both 'catogry' and 'category' for backward compatibility
+  
   const { title, description, category, catogry, image, _id, createdAt } = blog;
   const [isLoading, setIsLoading] = useState(true);
   const [imgError, setImgError] = useState(false);
@@ -27,7 +27,6 @@ const BlogCard = ({ blog }) => {
     setIsLoading(false);
   };
 
-  // Strip HTML tags from description for better preview
   const stripHtml = (html) => {
     const tmp = document.createElement('div');
     tmp.innerHTML = html;
